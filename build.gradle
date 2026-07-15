@@ -1,0 +1,55 @@
+plugins {
+	id "net.darkz70.figurestone-plugin-core" version "$figurestone_plugin_version"
+	id "maven-publish"
+}
+
+figurestoneDependencies {
+	minecraft = stonecutter.current.project.substring(stonecutter.current.project.indexOf("-") + 1)
+	lombok = prop("base.lombok_version")
+
+	fabricApi = prop("build.fabric_api")
+	fabricLoader = prop("build.fabric_loader")
+
+	forge = prop("build.forge")
+
+	neoForge = prop("build.neoforge")
+	parchment = prop("build.parchment")
+
+	additional {
+		//override("figurestoneCompileOnly", "yacl")
+	}
+}
+
+stonecutter {
+	replacements.string(current.parsed >= "26.1") {
+		replace("net.minecraft.client.gui.GuiGraphics", "net.minecraft.client.gui.GuiGraphicsExtractor")
+		replace("GuiGraphics", "GuiGraphicsExtractor")
+	}
+}
+
+publishing {
+	repositories {
+		maven {
+			name = 'GitHubPackages'
+			url = uri('https://maven.pkg.github.com/darkz70/FigureStoneLib')
+			credentials {
+				username = System.getenv('GITHUB_ACTOR') ?: findProperty('gpr.user')
+				password = System.getenv('GITHUB_TOKEN') ?: findProperty('gpr.key')
+			}
+		}
+		mavenLocal()
+	}
+
+	publications {
+		figurestonePlugin(MavenPublication) {
+			groupId = "${prop("data.mod_maven_group")}"
+			artifactId = prop("data.mod_id")
+			version = "${prop("data.mod_version")}-${stonecutter.current.project}"
+			from components.java
+		}
+	}
+}
+
+String prop(String key) {
+	return findProperty(key).toString()
+}

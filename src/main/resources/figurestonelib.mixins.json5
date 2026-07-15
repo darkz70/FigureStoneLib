@@ -1,0 +1,26 @@
+{
+	"required": true,
+	"package": "net.darkz70.figurestonelib.mixin",
+	"refmap": "${mod_id}.refmap.json",
+	"compatibilityLevel": "JAVA_${java}",
+	"mixins": [],
+	"client": [
+		//? =1.20.1 {
+		/*"tab.TabButtonWidgetMixin",
+		"tab.TabNavigationWidgetMixin",
+		"DrawContextMixin",
+		*///?}
+
+		//? >=1.21.4 {
+		"ScrollableWidgetMixin",
+		//?} else {
+		/*"EntryListWidgetMixin",
+		*///?}
+
+		"PressableWidgetMixin",
+		"TextFieldWidgetMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

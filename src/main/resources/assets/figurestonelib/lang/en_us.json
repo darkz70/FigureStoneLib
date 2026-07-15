@@ -1,0 +1,16 @@
+{
+	"modmenu.descriptionTranslation.${mod_id}": "${mod_description}",
+	"${mod_id}.modmenu.title": "${mod_name} Configuration",
+	"${mod_id}.modmenu.no_config_library_screen.message": "You need to install §6§lYet Another Config Lib [YACL]§f to open ${mod_name} Configuration Screen\n\n§a§lOpen §6§lYACL §a§lModrinth page?",
+
+	"${mod_id}.modmenu.category.general.name": "§lGeneral",
+
+	"${mod_id}.modmenu.group.figurestone_group.name": "§lFigureStone Group",
+	"${mod_id}.modmenu.group.figurestone_group.description": "Example FigureStone Group Description.",
+
+	"${mod_id}.modmenu.option.figurestone.name": "FigureStone Option",
+	"${mod_id}.modmenu.option.figurestone.description": "Example FigureStone Option Description.",
+
+	"${mod_id}.modmenu.formatter.enabled_or_disabled.true": "Enabled",
+	"${mod_id}.modmenu.formatter.enabled_or_disabled.false": "Disabled"
+}

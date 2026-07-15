@@ -1,0 +1,17 @@
+{
+	"required": true,
+	"package": "net.darkz70.figurestonelib.mixin.yacl",
+	"plugin": "net.darkz70.figurestonelib.compat.yacl.YACLCompatPlugin",
+	"refmap": "${mod_id}.refmap.json",
+	"compatibilityLevel": "JAVA_${java}",
+	"mixins": [],
+	"client": [
+		"AbstractWidgetMixin",
+		"YetAnotherConfigLibImplBuilderMixin",
+		"YetAnotherConfigLibImplMixin",
+		"SearchFieldWidgetMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

@@ -1,0 +1,46 @@
+//~ client_fabric_commands
+
+package net.darkz70.figurestonelib.client.command;
+
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.context.CommandContext;
+import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
+import net.darkz70.figurestonelib.FigureStoneLib;
+import net.darkz70.figurestonelib.utils.CommandUtils;
+import net.darkz70.figurestonelib.utils.command.CommandTextBuilder;
+import net.minecraft.network.chat.*;
+import net.minecraft.network.chat.HoverEvent.*;
+import net.minecraft.util.*;
+import net.minecraft.*;
+import net.minecraft.world.item.*;
+import static net.darkz70.figurestonelib.utils.CommandUtils.literal;
+
+public class TestFigureStoneLibCommandsManager {
+
+	public static void register(CommandDispatcher<FabricClientCommandSource> dispatcher) {
+		dispatcher.register(literal(FigureStoneLib.MOD_ID)
+				.executes(TestFigureStoneLibCommandsManager::test));
+	}
+
+	// Tip: You should avoid using context.getSource()
+	private static int test(CommandContext<FabricClientCommandSource> context) {
+		long nanos = Util.getNanos();
+		Component text = CommandTextBuilder.startBuilder("test", FigureStoneLib.MOD_ID, nanos)
+				.withCopyToClipboard(String.valueOf(nanos))
+				.withHoverEvent(CommandTextBuilder.getHoverEvent(
+						Action.SHOW_ITEM,
+						//? if >=26.1 {
+						new ItemStackTemplate(Items.MOSS_BLOCK)
+						//?} elif >=1.21.5 {
+						/*Items.MOSS_BLOCK.getDefaultInstance()
+						*///?} else {
+						/*new ItemStackInfo(Items.MOSS_BLOCK.getDefaultInstance())
+						*///?}
+				))
+				.build();
+
+		CommandUtils.sendMessage(text);
+		return 1;
+	}
+
+}
