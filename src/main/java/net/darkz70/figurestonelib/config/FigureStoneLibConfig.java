@@ -28,7 +28,7 @@ public class FigureStoneLibConfig {
 	private static final Logger LOGGER = LoggerFactory.getLogger(FigureStoneLib.MOD_NAME + "/Config");
 	private static FigureStoneLibConfig INSTANCE;
 	
-	private boolean figurestone;
+	private boolean figureStone;
 
 	private FigureStoneLibConfig() {
 		throw new IllegalArgumentException();
