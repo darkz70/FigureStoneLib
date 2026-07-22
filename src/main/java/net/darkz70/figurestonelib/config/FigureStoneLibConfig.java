@@ -21,7 +21,7 @@ import static net.darkz70.figurestonelib.utils.CodecUtils.option;
 public class FigureStoneLibConfig {
 
 	public static final Codec<FigureStoneLibConfig> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-			option("figurestone", false, Codec.BOOL, FigureStoneLibConfig::isFigureStone)
+			option("figureStone", false, Codec.BOOL, FigureStoneLibConfig::isFigureStone)
 	).apply(instance, FigureStoneLibConfig::new));
 
 	private static final File CONFIG_FILE = FigureStoneLoader.getConfigDir().resolve(FigureStoneLib.MOD_ID + ".json5").toFile();

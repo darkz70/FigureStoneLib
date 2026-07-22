@@ -32,9 +32,11 @@ publishing {
 		maven {
 			name = 'GitHubPackages'
 			url = uri('https://maven.pkg.github.com/darkz70/FigureStoneLib')
+			def ghUser = System.getenv('GITHUB_ACTOR') ?: project.findProperty('gpr.user')
+			def ghToken = System.getenv('GITHUB_TOKEN') ?: project.findProperty('gpr.key')
 			credentials {
-				username = System.getenv('GITHUB_ACTOR') ?: findProperty('gpr.user')
-				password = System.getenv('GITHUB_TOKEN') ?: findProperty('gpr.key')
+				username = ghUser
+				password = ghToken
 			}
 		}
 		mavenLocal()

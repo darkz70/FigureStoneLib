@@ -1,0 +1,2 @@
+- Update to 26.2
+- Dropped support 1.21.4/5/8

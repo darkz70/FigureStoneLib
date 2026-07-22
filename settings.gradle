@@ -18,9 +18,11 @@ pluginManagement {
 		maven {
 			name "GitHubPackages"
 			url "https://maven.pkg.github.com/darkz70/FigureStonePlugin"
+			def ghUser = System.getenv("GITHUB_ACTOR") ?: providers.gradleProperty("gpr.user").getOrNull()
+			def ghToken = System.getenv("GITHUB_TOKEN") ?: providers.gradleProperty("gpr.key").getOrNull()
 			credentials {
-				username = System.getenv("GITHUB_ACTOR") ?: findProperty("gpr.user")
-				password = System.getenv("GITHUB_TOKEN") ?: findProperty("gpr.key")
+				username = ghUser
+				password = ghToken
 			}
 		}
 		maven {
